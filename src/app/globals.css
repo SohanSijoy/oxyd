@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --color-carbon-black: #050505;
+  /* Deepened from #080808 */
+  --color-deep-graphite: #0F0F0F;
+  /* Deepened from #121212 */
+  --color-vapor-white: #F2F2F2;
+  --color-burnished-bronze: #C5A059;
+  --color-signal-blue: #2E5CFF;
+
+  --font-oswald: Oswald, sans-serif;
+  --font-inter: Inter, sans-serif;
+  --font-playfair: "Playfair Display", serif;
+}
+
+:root {
+  --background: var(--color-carbon-black);
+  --foreground: var(--color-vapor-white);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+  cursor: none;
+  /* Custom cursor implementation */
+  position: relative;
+}
+
+/* Subtle Film Grain Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9990;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Typography Refinements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 0.02em;
+  /* Tight premium tracking */
+}
+
+/* Custom Cursor Styles - Fallback */
+.cursor-dot,
+.cursor-outline {
+  display: none;
+  /* Handled by React component now */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  /* Slightly thinner */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-carbon-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-burnished-bronze);
+}
